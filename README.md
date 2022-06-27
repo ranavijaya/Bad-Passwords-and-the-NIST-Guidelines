@@ -1,0 +1,15 @@
+## Bad Passwords and the NIST Guidelines
+
+##
+
+**The NIST Special Publication 800-63B**
+
+- If you – 50 years ago – needed to come up with a secret password you were probably part of a secret espionage organization or (more likely) you were pretending to be a spy when playing as a kid. Today, many of us are forced to come up with new passwords _all the time_ when signing into sites and apps. As a password _inventeur_ it is your responsibility to come up with good, hard-to-crack passwords. But it is also in the interest of sites and apps to make sure that you use good passwords. The problem is that it&#39;s really hard to define what makes a good password. However, _the National Institute of Standards and Technology_ (NIST) knows what the second best thing is: To make sure you&#39;re at least not using a _bad_ password.
+- In this notebook, we will go through the rules in [NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) which details what checks a _verifier_ (what the NIST calls a second party responsible for storing and verifying passwords) should perform to make sure users don&#39;t pick bad passwords. We will go through the passwords of users from a fictional company and use Python to flag the users with bad passwords. But us being able to do this already means the fictional company is breaking one of the rules of 800-63B:
+- Verifiers SHALL store memorized secrets in a form that is resistant to offline attacks. Memorized secrets SHALL be salted and hashed using a suitable one-way key derivation function.
+- That is, never save users&#39; passwords in plaintext, always encrypt the passwords! Keeping this in mind for the next time we&#39;re building a password management system, let&#39;s load in the data.
+- _Warning: The list of passwords and the fictional user database both contain  __**real**__  passwords leaked from  __**real**__  websites. These passwords have not been filtered in any way and include words that are explicit, derogatory and offensive._
+- In this notebook, we&#39;ve implemented the password checks recommended by the NIST Special Publication 800-63B. It&#39;s certainly possible to better implement these checks, for example, by using a longer list of common passwords. Also note that the NIST checks in no way guarantee that a chosen password is good, just that it&#39;s not obviously bad.
+- Apart from the checks we&#39;ve implemented above the NIST is also clear with what password rules should _not_ be imposed:
+- Verifiers SHOULD NOT impose other composition rules (e.g., requiring mixtures of different character types or prohibiting consecutively repeated characters) for memorized secrets. Verifiers SHOULD NOT require memorized secrets to be changed arbitrarily (e.g., periodically).
+- So the next time a website or app tells you to &quot;include both a number, symbol and an upper and lower case character in your password&quot; you should send them a copy of [NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html).
